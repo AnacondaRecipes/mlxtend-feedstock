@@ -27,6 +27,9 @@ requirements:
     - scikit-learn >=0.20.1
     - pandas >=0.23.4
     - matplotlib-base >=1.5.1
+    # until scipy is hotfixed: it brings in the wrong numpy
+    - numpy <1.23.0
+
 
 test:
   requires:
