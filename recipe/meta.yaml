@@ -6,31 +6,29 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: bab0a9b28b5ffc5254fb73dc68f12fdab44215bc6b097ea3cc78d6bb7f10c47a
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python
     - setuptools
+    - wheel
   run:
-    - python >=3.6
-    - numpy >=1.14.6
-    - scipy >=1.1.0
-    - scikit-learn >=0.20.1
-    - pandas >=0.23.4
-    - matplotlib-base >=1.5.1
+    - python
+    - joblib >=0.13.2
+    - matplotlib-base >=3.0.0
+    - numpy >=1.16.2
+    - pandas >=0.24.2
+    - scikit-learn >=1.0.2
+    - scipy >=1.2.1
 
 test:
-  requires:
-    - nose
   imports:
     - mlxtend
     - mlxtend._base
@@ -49,6 +47,10 @@ test:
     - mlxtend.regressor
     - mlxtend.text
     - mlxtend.utils
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/rasbt/mlxtend
@@ -56,15 +58,9 @@ about:
   license_family: BSD
   license_file: LICENSE-BSD3.txt
   summary: Machine Learning Library Extensions
-  description: >
+  description: |
     A library of Python tools and extensions for data science and machine learning.
-
-    Contact =============
-
-    If you have any questions or comments about mlxtend, please feel free to contact me via eMail: mail@sebastianraschka.com or Twitter: https://twitter.com/rasbt
-
-    This project is hosted at https://github.com/rasbt/mlxtend The documentation can be found at http://rasbt.github.io/mlxtend/
-  doc_url: http://rasbt.github.io/mlxtend/
+  doc_url: https://rasbt.github.io/mlxtend/
   dev_url: https://github.com/rasbt/mlxtend
 
 extra:
