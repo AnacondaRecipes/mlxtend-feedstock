@@ -56,9 +56,7 @@ about:
   home: https://github.com/rasbt/mlxtend
   license: BSD-3-Clause
   license_family: BSD
-  license_file: |
-    - LICENSE-BSD3.txt
-    - LICENSE-CC-BY.txt
+  license_file: LICENSE-BSD3.txt
   summary: Machine Learning Library Extensions
   description: |
     A library of Python tools and extensions for data science and machine learning.
