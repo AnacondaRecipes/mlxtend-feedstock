@@ -12,6 +12,9 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  # Package requires numpy>=2.3.5, but this version is not available for py310
+  # https://github.com/numpy/numpy/blob/v2.3.5/pyproject.toml#L19
+  skip: true  # [py<311]
 
 requirements:
   host:
