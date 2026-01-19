@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 594f124539d84c3a86951715e16656abfc3005f5da7d3a56b53c77d28d5263f8
+  url: https://github.com/rasbt/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 7ae3abec411f51dff732d2281733db2a19e4d134292503a4f3a875939065b2b5
 
 build:
   number: 0
@@ -28,6 +28,8 @@ requirements:
     - scipy >=1.16.3
 
 test:
+  source_files:
+    - mlxtend/_base/tests
   imports:
     - mlxtend
     - mlxtend._base
@@ -48,8 +50,10 @@ test:
     - mlxtend.utils
   requires:
     - pip
+    - pytest
   commands:
     - pip check
+    - pytest -v mlxtend/_base/tests
 
 about:
   home: https://github.com/rasbt/mlxtend
@@ -59,7 +63,7 @@ about:
   summary: Machine Learning Library Extensions
   description: |
     A library of Python tools and extensions for data science and machine learning.
-  doc_url: https://rasbt.github.io/mlxtend/
+  doc_url: https://rasbt.github.io/mlxtend
   dev_url: https://github.com/rasbt/mlxtend
 
 extra:
