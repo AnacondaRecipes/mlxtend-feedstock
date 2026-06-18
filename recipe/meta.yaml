@@ -1,13 +1,13 @@
 {% set name = "mlxtend" %}
-{% set version = "0.24.0" %}
+{% set version = "0.25.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://github.com/rasbt/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 7ae3abec411f51dff732d2281733db2a19e4d134292503a4f3a875939065b2b5
+  sha256: 408a90e6db7e56535d5946e7e103229fcac019e9a1089f57519068d4d08601a1
 
 build:
   number: 0
@@ -23,12 +23,12 @@ requirements:
     - setuptools >=59.0.0
   run:
     - python
-    - joblib >=1.5.2
-    - matplotlib-base >=3.10.8
+    - scipy >=1.16.3
     - numpy >=2.3.5
     - pandas >=2.3.3
     - scikit-learn >=1.8.0
-    - scipy >=1.16.3
+    - matplotlib-base >=3.10.8
+    - joblib >=1.5.2
 
 test:
   source_files:
